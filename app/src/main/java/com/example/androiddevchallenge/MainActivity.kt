@@ -20,20 +20,16 @@ import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
 import androidx.navigation.compose.rememberNavController
-import com.example.androiddevchallenge.model.Dog
 import com.example.androiddevchallenge.model.adoptableDogs
 import com.example.androiddevchallenge.ui.main.DogDetail
 import com.example.androiddevchallenge.ui.main.DogList
-import com.example.androiddevchallenge.ui.main.DogRow
 import com.example.androiddevchallenge.ui.theme.MyTheme
 
 class MainActivity : AppCompatActivity() {
@@ -57,7 +53,8 @@ fun MyApp() {
             composable("home") {
                 DogList(dogs = adoptableDogs, navController = navController)
             }
-            composable("detail/{dogId}",
+            composable(
+                "detail/{dogId}",
                 arguments = listOf(navArgument("dogId") { type = NavType.IntType })
             ) { backStackEntry ->
                 DogDetail(
